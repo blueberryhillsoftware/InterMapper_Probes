@@ -30,6 +30,7 @@
 	port_number     =   "443"
 	display_name	=	"Servers-Standard/HTTP & HTTPS/Check Heartbleed"
 	flags			=	"NAGIOS3"
+	poll_interval   =   "3600"
 </header> 
 
 <description> 
@@ -44,6 +45,8 @@ This probe invokes the Nagios check_heartbleed.py plugin on all three TLS versio
 Set the \i\Version\p\ parameter to -1 to test all TLS versions. Otherwise, set it to 0, 1, or 2 to test v1.0, v1.1, and v1.2, respectively.
 
 \u4=http://blueberryhillsoftware.com/heartbleed-probe-for-intermapper/\Check for updates\p0\ to this probe.
+
+\i\Note:\p\ This probe can take a long time to run. Set the probe timeout to 15 seconds, and the response time limits to a value greater than 15 seconds.
 </description> 
 
 <parameters>
