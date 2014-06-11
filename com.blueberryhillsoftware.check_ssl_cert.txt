@@ -52,6 +52,8 @@ The \i\Additional\p\ pararmeter can be used to add more options to the test.
 This probe invokes the \u4=http://exchange.nagios.org/directory/Plugins/Network-Protocols/HTTP/check_ssl_cert/details\Nagios check_ssl_cert plugin\p0\ to verify the SSL Certificate. See the check_ssl_cert plugin's page for more details.
 
 \u4=http://blueberryhillsoftware.com/check_ssl_cert-probe-for-intermapper\Check for updates\p0\ to this probe.
+
+\i\Note:\p\ The default polling interval for this probe is six hours - the checks don't need to happen very often.
 </description> 
 
 <parameters>
