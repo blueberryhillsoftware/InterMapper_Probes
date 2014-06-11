@@ -3,7 +3,7 @@ InterMapper Probes
 
 A set of probes to use with the InterMapper network monitoring software. The probes include:
 
-* *Check Heartbleed* probe that checks an SSL server to see if it is vulnerable to the Heartbleed bug. Goes into Critical status if the device is vulnerable. Checks SSL v1, v2, and v3.
+* *Check Heartbleed* probe that checks an SSL server to see if it is vulnerable to the Heartbleed bug. Goes into Critical status if the device is vulnerable. Checks TLS v1, v2, and v3, and SSL v3.0.
 * *Check SSL Certificate* probe that checks the expiration date of an SSL certificate. It alerts if the expiration is less than 30 days (default) away, and goes into critical status if it's less than 10 days away.
 
 
