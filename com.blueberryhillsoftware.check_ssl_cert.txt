@@ -1,0 +1,85 @@
+<!-- 
+	InterMapper command-line probe that checks SSL Certificate expiration (com.blueberryhillsoftware.check_ssl_cert.txt)
+	
+	This InterMapper probe is licensed as: 
+		Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) 
+		http://creativecommons.org/licenses/by-sa/4.0/
+	You are free to:
+		Share - copy and redistribute the material in any medium or format
+		Adapt - remix, transform, and build upon the material
+			for any purpose, even commercially.
+	This probe may be used by anyone at no cost, as long as you follow the license terms.
+	
+    Rich.Brown@blueberryhillsoftware.com
+    http://www.blueberryhillsoftware.com
+    Copyright (c) 2014, Blueberry Hill Software 
+
+---
+
+	The check_ssl_cert Nagios plugin that this probe relies on is licensed under the GPL. 
+	Read the source code of the probe for more details. You can download the check_ssl_cert
+	plugin from: 
+	
+	Info: http://exchange.nagios.org/directory/Plugins/Network-Protocols/HTTP/check_ssl_cert/details
+	Download: http://exchange.nagios.org/components/com_mtree/attachment.php?link_id=1290&cf_id=24
+
+--> 
+
+<header> 
+	type			=	"cmd-line" 
+	package			=	"com.blueberryhillsoftware" 
+	probe_name		=	"check_ssl_cert" 
+	human_name		=	"Check SSL Certificate" 
+	version			=	"1.0" 
+	address_type	=	"IP" 
+	port_number     =   "443"
+	display_name	=	"Servers-Standard/HTTP & HTTPS/Check SSL Certificate"
+	poll_interval   =   "21600"
+	flags			=	"NAGIOS3"
+</header> 
+
+<description> 
+\G\Check SSL Certificate for expiration\p\ 
+
+Check an SSL Certificate on a server and verify that its expiration date is sufficiently far away. 
+
+\b\Parameters\p\
+
+The thresholds of \i\Warning\p\ and \i\Critical\p\ specify the number of days before the device gives warning and critical alerts. The defaults are 30 and 10 days, respectively.
+
+The \i\Additional\p\ pararmeter can be used to add more options to the test. 
+
+This probe invokes the \u4=http://exchange.nagios.org/directory/Plugins/Network-Protocols/HTTP/check_ssl_cert/details\Nagios check_ssl_cert plugin\p0\ to verify the SSL Certificate. See the check_ssl_cert plugin's page for more details.
+
+\u4=http://blueberryhillsoftware.com/check_ssl_cert-probe-for-intermapper\Check for updates\p0\ to this probe.
+</description> 
+
+<parameters>
+Warning = "30"
+Critical = "10"
+Additional = "-A"
+</parameters>
+
+<command-line> 
+-- Empty path forces the InterMapper Settings:Tools directory
+path="" 
+cmd=check_ssl_cert 
+arg = "-H ${devicename} -p ${Port} -w ${Warning} -c ${Critical} -t 15 ${Additional} "
+</command-line> 
+
+<command-exit>
+-- These are the exit codes used by Nagios plugins
+down:${EXIT_CODE}=3 
+critical:${EXIT_CODE}=2 
+alarm:${EXIT_CODE}=1 
+okay:${EXIT_CODE}=0 
+</command-exit> 
+
+<command-display>
+
+\B5\check_ssl_cert status\P0\    \u4=https://$devicename:$port\Go to the website\p0\
+Critical Threshold: ${critical} \i3g\days\pm0\
+ Warning Threshold: ${warning} \i3g\days\pm0\
+Remaining${nagios_output}
+</command-display> 
+
