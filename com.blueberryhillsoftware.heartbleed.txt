@@ -44,9 +44,9 @@ This probe invokes the Nagios check_heartbleed.py plugin on all three TLS versio
 
 Set the \i\Version\p\ parameter to -1 to test all TLS versions. Otherwise, set it to 0, 1, or 2 to test v1.0, v1.1, and v1.2, respectively.
 
-\u4=http://blueberryhillsoftware.com/heartbleed-probe-for-intermapper/\Check for updates\p0\ to this probe.
-
 \i\Note:\p\ This probe can take a long time to run. Set the probe timeout to 15 seconds, and the response time limits to a value greater than 15 seconds.
+
+\u4=http://blueberryhillsoftware.com/heartbleed-probe-for-intermapper/\Check for updates\p0\ to this probe.
 </description> 
 
 <parameters>
@@ -70,7 +70,7 @@ okay:${EXIT_CODE}=0
 
 <command-display>
 
-\B5\Heartbleed status\P0\    \u4=https://$address:$port\Go to the website\p0\
+\B5\Check Heartbleed\P0\ \u4=http://blueberryhillsoftware.com/heartbleed-probe-for-intermapper\[?]\p0\   \u4=https://$address:$port\Go to the server\p0\
 ${nagios_output}
 </command-display> 
 

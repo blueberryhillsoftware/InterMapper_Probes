@@ -39,9 +39,9 @@
 </header> 
 
 <description> 
-\G\Check SSL Certificate for expiration\p\ 
+\BG\Check SSL Certificate for expiration\p\ 
 
-Check an SSL Certificate on a server and verify that its expiration date is sufficiently far away. 
+Check an SSL Certificate on a web server and verify that its expiration date is sufficiently far away. 
 
 \b\Parameters\p\
 
@@ -51,9 +51,11 @@ The \i\Additional\p\ pararmeter can be used to add more options to the test.
 
 This probe invokes the \u4=http://exchange.nagios.org/directory/Plugins/Network-Protocols/HTTP/check_ssl_cert/details\Nagios check_ssl_cert plugin\p0\ to verify the SSL Certificate. See the check_ssl_cert plugin's page for more details.
 
-\u4=http://blueberryhillsoftware.com/check_ssl_cert-probe-for-intermapper\Check for updates\p0\ to this probe.
+\i\Note:\p\ This probe executes a /bin/sh script, and only works on a Unix/Linux/OS X server. There is not currently a version that runs on a Windows server. Contact the author if you would be interested in a Windows version.
 
 \i\Note:\p\ The default polling interval for this probe is six hours - the checks don't need to happen very often.
+
+\u4=http://blueberryhillsoftware.com/check_ssl_cert-probe-for-intermapper\Check for updates\p0\ to this probe.
 </description> 
 
 <parameters>
@@ -79,7 +81,7 @@ okay:${EXIT_CODE}=0
 
 <command-display>
 
-\B5\check_ssl_cert status\P0\    \u4=https://$devicename:$port\Go to the website\p0\
+\B5\Check SSL Certificate\P0\ \u4=http://blueberryhillsoftware.com/check_ssl_cert-probe-for-intermapper\[?]\p0\    \u4=https://$devicename:$port\Go to the server\p0\ 
 Critical Threshold: ${critical} \i3g\days\pm0\
  Warning Threshold: ${warning} \i3g\days\pm0\
 Remaining${nagios_output}
